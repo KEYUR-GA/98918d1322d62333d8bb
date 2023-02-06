@@ -13,8 +13,9 @@ export class PopupComponent implements OnInit {
     public matDIa: MatDialogRef<PopupComponent>
 
   ) {
+    console.log('data', data)
+    //to perevent outside click to close modal
     matDIa.disableClose = true
-
   }
 
   ngOnInit() {
