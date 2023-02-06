@@ -20,29 +20,23 @@ export class TableComponent implements OnInit {
   ) {
     this.tableApi.fetchData().subscribe((res: any) => {
       this.dataSource = new MatTableDataSource<any>(res.hits)
-      // this.dataSource = res.hits
       console.log(this.dataSource)
     })
 
   }
-  rowClick(value) {
-    console.log('row click', value)
-
-    let dia = this.matdia.open(PopupComponent, {
+  rowClick(tableData) {
+    this.matdia.open(PopupComponent, {
       width: '500px',
       height: '500px',
-      data: { value }
+      data: { tableData }
     })
   }
 
   ngOnInit() {
   }
   search(event) {
-    debugger
     const filter = (event.target as HTMLInputElement).value
     this.dataSource.filter = filter.trim().toLowerCase()
-
-
   }
 
 }
